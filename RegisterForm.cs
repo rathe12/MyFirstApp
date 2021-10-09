@@ -20,18 +20,20 @@ namespace MyFirstApp
             userNameField.ForeColor = Color.Gray;
             userSurnameField.Text = "Введите фамилию";
             userSurnameField.ForeColor = Color.Gray;
+            loginField.Text = "Введите логин";
+            loginField.ForeColor = Color.Gray;
+            passField.Text = "Введите пароль";
+            passField.ForeColor = Color.Gray;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void CloseButton_MouseEnter(object sender, EventArgs e)
         {
             CloseButton.ForeColor = Color.Red;
         }
-
         private void CloseButton_MouseLeave(object sender, EventArgs e)
         {
             CloseButton.ForeColor = Color.White;
@@ -76,13 +78,44 @@ namespace MyFirstApp
                 userSurnameField.ForeColor = Color.Black;
             }
         }
-
         private void userSurnameField_Leave(object sender, EventArgs e)
         {
             if (userSurnameField.Text == "")
             {
                 userSurnameField.Text = "Введите фамилию";
                 userSurnameField.ForeColor = Color.Gray;
+            }
+        }
+        private void loginField_Enter(object sender, EventArgs e)
+        {
+            if (loginField.Text == "Введите логин")
+            {
+                loginField.Text = "";
+                loginField.ForeColor = Color.Black;
+            }
+        }
+        private void loginField_Leave(object sender, EventArgs e)
+        {
+            if (loginField.Text == "")
+            {
+                loginField.Text = "Введите логин";
+                loginField.ForeColor = Color.Gray;
+            }
+        }
+        private void passField_Enter(object sender, EventArgs e)
+        {
+            if (passField.Text == "Введите пароль")
+            {
+                passField.Text = "";
+                passField.ForeColor = Color.Black;
+            }
+        }
+        private void passField_Leave(object sender, EventArgs e)
+        {
+            if (passField.Text == "")
+            {
+                passField.Text = "Введите пароль";
+                passField.ForeColor = Color.Gray;
             }
         }
     }

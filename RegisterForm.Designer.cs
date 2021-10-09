@@ -137,6 +137,8 @@ namespace MyFirstApp
             this.passField.Name = "passField";
             this.passField.Size = new System.Drawing.Size(376, 64);
             this.passField.TabIndex = 4;
+            this.passField.Enter += new System.EventHandler(this.passField_Enter);
+            this.passField.Leave += new System.EventHandler(this.passField_Leave);
             // 
             // pictureBox2
             // 
@@ -156,6 +158,8 @@ namespace MyFirstApp
             this.loginField.Name = "loginField";
             this.loginField.Size = new System.Drawing.Size(376, 64);
             this.loginField.TabIndex = 2;
+            this.loginField.Enter += new System.EventHandler(this.loginField_Enter);
+            this.loginField.Leave += new System.EventHandler(this.loginField_Leave);
             // 
             // pictureBox1
             // 
