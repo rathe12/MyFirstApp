@@ -30,6 +30,8 @@ namespace MyFirstApp
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.loginLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.userSurnameField = new System.Windows.Forms.TextBox();
@@ -53,6 +55,8 @@ namespace MyFirstApp
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(37)))), ((int)(((byte)(128)))));
+            this.MainPanel.Controls.Add(this.loginLabel);
+            this.MainPanel.Controls.Add(this.label2);
             this.MainPanel.Controls.Add(this.pictureBox4);
             this.MainPanel.Controls.Add(this.pictureBox3);
             this.MainPanel.Controls.Add(this.userSurnameField);
@@ -66,10 +70,33 @@ namespace MyFirstApp
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(949, 450);
+            this.MainPanel.Size = new System.Drawing.Size(949, 468);
             this.MainPanel.TabIndex = 1;
             this.MainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPanel_MouseDown);
             this.MainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPanel_MouseMove);
+            // 
+            // loginLabel
+            // 
+            this.loginLabel.AutoSize = true;
+            this.loginLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.loginLabel.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginLabel.ForeColor = System.Drawing.Color.White;
+            this.loginLabel.Location = new System.Drawing.Point(523, 328);
+            this.loginLabel.Name = "loginLabel";
+            this.loginLabel.Size = new System.Drawing.Size(66, 23);
+            this.loginLabel.TabIndex = 11;
+            this.loginLabel.Text = "Войти";
+            this.loginLabel.Click += new System.EventHandler(this.loginLabel_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(347, 328);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(181, 23);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Уже есть аккаунт?";
             // 
             // pictureBox4
             // 
@@ -122,7 +149,7 @@ namespace MyFirstApp
             this.ButtonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonRegister.ForeColor = System.Drawing.Color.White;
-            this.ButtonRegister.Location = new System.Drawing.Point(254, 341);
+            this.ButtonRegister.Location = new System.Drawing.Point(257, 373);
             this.ButtonRegister.Name = "ButtonRegister";
             this.ButtonRegister.Size = new System.Drawing.Size(451, 78);
             this.ButtonRegister.TabIndex = 5;
@@ -215,10 +242,11 @@ namespace MyFirstApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 450);
+            this.ClientSize = new System.Drawing.Size(949, 468);
             this.Controls.Add(this.MainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegisterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
@@ -247,5 +275,7 @@ namespace MyFirstApp
         private System.Windows.Forms.TextBox userNameField;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label loginLabel;
+        private System.Windows.Forms.Label label2;
     }
 }

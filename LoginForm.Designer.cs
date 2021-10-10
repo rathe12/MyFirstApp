@@ -30,6 +30,8 @@ namespace MyFirstApp
         private void InitializeComponent()
         {
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.registerLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.ButtonLogin = new System.Windows.Forms.Button();
             this.passField = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -47,6 +49,8 @@ namespace MyFirstApp
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(37)))), ((int)(((byte)(128)))));
+            this.MainPanel.Controls.Add(this.registerLabel);
+            this.MainPanel.Controls.Add(this.label2);
             this.MainPanel.Controls.Add(this.ButtonLogin);
             this.MainPanel.Controls.Add(this.passField);
             this.MainPanel.Controls.Add(this.pictureBox2);
@@ -61,6 +65,29 @@ namespace MyFirstApp
             this.MainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPanel_MouseDown);
             this.MainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPanel_MouseMove);
             // 
+            // registerLabel
+            // 
+            this.registerLabel.AutoSize = true;
+            this.registerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registerLabel.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.registerLabel.ForeColor = System.Drawing.Color.White;
+            this.registerLabel.Location = new System.Drawing.Point(244, 328);
+            this.registerLabel.Name = "registerLabel";
+            this.registerLabel.Size = new System.Drawing.Size(191, 23);
+            this.registerLabel.TabIndex = 7;
+            this.registerLabel.Text = "Зарегистрироваться";
+            this.registerLabel.Click += new System.EventHandler(this.registerLabel_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(64, 328);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 23);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Еще нет аккаунта?";
+            // 
             // ButtonLogin
             // 
             this.ButtonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(9)))), ((int)(((byte)(170)))));
@@ -70,7 +97,7 @@ namespace MyFirstApp
             this.ButtonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButtonLogin.ForeColor = System.Drawing.Color.White;
-            this.ButtonLogin.Location = new System.Drawing.Point(96, 350);
+            this.ButtonLogin.Location = new System.Drawing.Point(96, 365);
             this.ButtonLogin.Name = "ButtonLogin";
             this.ButtonLogin.Size = new System.Drawing.Size(324, 78);
             this.ButtonLogin.TabIndex = 5;
@@ -167,6 +194,7 @@ namespace MyFirstApp
             this.Controls.Add(this.MainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
@@ -189,5 +217,7 @@ namespace MyFirstApp
         private System.Windows.Forms.TextBox passField;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button ButtonLogin;
+        private System.Windows.Forms.Label registerLabel;
+        private System.Windows.Forms.Label label2;
     }
 }

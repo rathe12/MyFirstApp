@@ -25,7 +25,7 @@ namespace MyFirstApp
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void CloseButton_MouseEnter(object sender, EventArgs e)
@@ -75,7 +75,6 @@ namespace MyFirstApp
                 passField.ForeColor = Color.Gray;
             }
         }
-
         private void MainPanel_MouseDown(object sender, MouseEventArgs e)
         {
             iFormX = this.Location.X;
@@ -90,8 +89,20 @@ namespace MyFirstApp
             if (e.Button == MouseButtons.Left)
                 this.Location = new Point(iFormX + (iMouseX2 - iMouseX), iFormY + (iMouseY2 - iMouseY));
         }
+        private void registerLabel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.Show();
+        }
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
+            if (loginField.Text == "Введите логин" || passField.Text == "Введите пароль")
+            {
+                MessageBox.Show("Вы ввели не все данные");
+                return;
+            }
+
             DB db = new DB();
 
             DataTable table = new DataTable();
@@ -106,9 +117,13 @@ namespace MyFirstApp
             adapter.Fill(table);
 
             if (table.Rows.Count > 0)
-                MessageBox.Show("Yes");
+            {
+                this.Hide();
+                MainForm mainForm = new MainForm();
+                mainForm.Show();
+            }
             else
-                MessageBox.Show("No");
+                MessageBox.Show("Проверьте корректность введенных данных");
         }
     }
 }

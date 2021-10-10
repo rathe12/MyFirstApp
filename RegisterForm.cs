@@ -29,7 +29,7 @@ namespace MyFirstApp
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
         private void CloseButton_MouseEnter(object sender, EventArgs e)
         {
@@ -119,6 +119,12 @@ namespace MyFirstApp
                 passField.ForeColor = Color.Gray;
             }
         }
+        private void loginLabel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+        }
         private void ButtonRegister_Click(object sender, EventArgs e)
         {
             if (userNameField.Text == "Введите имя" || userSurnameField.Text == "Введите фамилию" || loginField.Text == "Введите логин" || passField.Text == "Введите пароль")
@@ -136,12 +142,20 @@ namespace MyFirstApp
             command.Parameters.Add("@name", MySqlDbType.VarChar).Value = userNameField.Text;
             command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = userSurnameField.Text;
 
+            bool checkreg = false;
             db.openConnection();
             if (command.ExecuteNonQuery() == 1)
-                MessageBox.Show("Аккаунт был создан");
+                checkreg = true;
             else
-                MessageBox.Show("Аккаунт не был создан");
+                MessageBox.Show("");
             db.closeConnection();
+
+            if (checkreg)
+            {
+                this.Hide();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+            }
         }
         public Boolean isUserExists()
         {
