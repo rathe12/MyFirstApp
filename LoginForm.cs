@@ -17,8 +17,10 @@ namespace MyFirstApp
         {
             InitializeComponent();
 
-            this.passField.AutoSize = false;
-            this.passField.Size = new Size(this.passField.Width, 64);
+            loginField.Text = "Введите логин";
+            loginField.ForeColor = Color.Gray;
+            passField.Text = "Введите пароль";
+            passField.ForeColor = Color.Gray;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -37,6 +39,43 @@ namespace MyFirstApp
         }
 
         int iFormX, iFormY, iMouseX, iMouseY;
+
+        private void loginField_Enter(object sender, EventArgs e)
+        {
+            if (loginField.Text == "Введите логин")
+            {
+                loginField.Text = "";
+                loginField.ForeColor = Color.Black;
+            }
+        }
+
+        private void loginField_Leave(object sender, EventArgs e)
+        {
+            if (loginField.Text == "")
+            {
+                loginField.Text = "Введите логин";
+                loginField.ForeColor = Color.Gray;
+            }
+        }
+
+        private void passField_Enter(object sender, EventArgs e)
+        {
+            if (passField.Text == "Введите пароль")
+            {
+                passField.Text = "";
+                passField.ForeColor = Color.Black;
+            }
+        }
+
+        private void passField_Leave(object sender, EventArgs e)
+        {
+            if (passField.Text == "")
+            {
+                passField.Text = "Введите пароль";
+                passField.ForeColor = Color.Gray;
+            }
+        }
+
         private void MainPanel_MouseDown(object sender, MouseEventArgs e)
         {
             iFormX = this.Location.X;
@@ -53,9 +92,6 @@ namespace MyFirstApp
         }
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
-            String loginUser = loginField.Text;
-            String passUser = passField.Text;
-
             DB db = new DB();
 
             DataTable table = new DataTable();
@@ -63,8 +99,8 @@ namespace MyFirstApp
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
             MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL AND `pass` = @uP",db.getConnection());
-            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
-            command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
+            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
+            command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passField.Text;
 
             adapter.SelectCommand = command;
             adapter.Fill(table);

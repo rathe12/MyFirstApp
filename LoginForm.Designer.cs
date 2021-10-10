@@ -82,10 +82,12 @@ namespace MyFirstApp
             // 
             this.passField.Font = new System.Drawing.Font("Times New Roman", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passField.Location = new System.Drawing.Point(96, 246);
+            this.passField.Multiline = true;
             this.passField.Name = "passField";
-            this.passField.Size = new System.Drawing.Size(376, 57);
+            this.passField.Size = new System.Drawing.Size(376, 64);
             this.passField.TabIndex = 4;
-            this.passField.UseSystemPasswordChar = true;
+            this.passField.Enter += new System.EventHandler(this.passField_Enter);
+            this.passField.Leave += new System.EventHandler(this.passField_Leave);
             // 
             // pictureBox2
             // 
@@ -105,6 +107,8 @@ namespace MyFirstApp
             this.loginField.Name = "loginField";
             this.loginField.Size = new System.Drawing.Size(376, 64);
             this.loginField.TabIndex = 2;
+            this.loginField.Enter += new System.EventHandler(this.loginField_Enter);
+            this.loginField.Leave += new System.EventHandler(this.loginField_Leave);
             // 
             // pictureBox1
             // 
