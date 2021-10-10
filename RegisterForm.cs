@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -117,6 +118,52 @@ namespace MyFirstApp
                 passField.Text = "Введите пароль";
                 passField.ForeColor = Color.Gray;
             }
+        }
+        private void ButtonRegister_Click(object sender, EventArgs e)
+        {
+            if (userNameField.Text == "Введите имя" || userSurnameField.Text == "Введите фамилию" || loginField.Text == "Введите логин" || passField.Text == "Введите пароль")
+            {
+                MessageBox.Show("Вы ввели не все данные");
+                return;
+            }
+
+            if (isUserExists())
+                return;
+            DB db = new DB();
+            MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`login`, `pass`, `name`, `surname`) VALUES (@login, @pass, @name, @surname)",db.getConnection());
+            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
+            command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passField.Text;
+            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = userNameField.Text;
+            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = userSurnameField.Text;
+
+            db.openConnection();
+            if (command.ExecuteNonQuery() == 1)
+                MessageBox.Show("Аккаунт был создан");
+            else
+                MessageBox.Show("Аккаунт не был создан");
+            db.closeConnection();
+        }
+        public Boolean isUserExists()
+        {
+            DB db = new DB();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL", db.getConnection());
+            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Пользователь с таким логином уже существует");
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

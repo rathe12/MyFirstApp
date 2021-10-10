@@ -128,6 +128,7 @@ namespace MyFirstApp
             this.ButtonRegister.TabIndex = 5;
             this.ButtonRegister.Text = "Зарегистрироваться";
             this.ButtonRegister.UseVisualStyleBackColor = false;
+            this.ButtonRegister.Click += new System.EventHandler(this.ButtonRegister_Click);
             // 
             // passField
             // 
